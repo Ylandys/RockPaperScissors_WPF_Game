@@ -1,0 +1,149 @@
+﻿<Window x:Class="RockPaperScissors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:RockPaperScissors"
+        mc:Ignorable="d" 
+                TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{x:Null}"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+
+    <materialDesign:Card Width="1080" Height="720" UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}"
+        Margin="25" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="303.295"/>
+                <RowDefinition Height="170.705"/>
+                <RowDefinition Height="auto" MinHeight="722"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+
+
+            <Border x:Name="LeftTop" CornerRadius="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="400" Height="432" Margin="0,21,0,0" Grid.RowSpan="2">
+                <Ellipse  VerticalAlignment="Center"  Width="260" Height="268"  HorizontalAlignment="Left" Margin="116 80 0 0">
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="Player"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Border>
+            <TextBox x:Name="UserName" Margin="103,77,677,15" FontSize="33" IsReadOnly="True"
+                 Text="Игрок Владик" TextAlignment="Center"  BorderThickness="3" VerticalContentAlignment="Center"
+                   Background="#73C8F0" Style="{StaticResource TextBoxCorner}" BorderBrush="Transparent" Grid.Row="1"/>
+
+
+
+            <Border x:Name="RightTop" CornerRadius="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="400" Height="432" Margin="680,21,0,0" Grid.RowSpan="2">
+                <Ellipse  VerticalAlignment="Center"  Width="260" Height="268"  HorizontalAlignment="Right" Margin="0 80 116 0">
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="ComputerName"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Border>
+
+            <TextBox x:Name="CompName" Margin="678,77,102,15" FontSize="33" IsReadOnly="True"
+                 Text="Bot John" TextAlignment="Center"  BorderThickness="3" VerticalContentAlignment="Center"
+                   Background="#3CAF96" Style="{StaticResource TextBoxCorner}" BorderBrush="Transparent" Grid.Row="1"/>
+
+            <Border x:Name="Bottom" Background="#623ed0" CornerRadius="30 30 0 0" Height="263" 
+                VerticalAlignment="Top" Margin="-3,163,-2,0" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="1" >
+                <DockPanel>
+
+                    <StackPanel DockPanel.Dock="Left">
+                        <Button x:Name="btnRock" Click="btnRockClick_ChooseStone"
+                            Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderBrush="Transparent"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth0" 
+                            materialDesign:ButtonAssist.CornerRadius="30" 
+                            Cursor="Hand"
+                            Width="217" Height="217"
+                            HorizontalAlignment="Left"
+                            Margin="63 30 0 0">
+                            <Button.Background>
+                                <ImageBrush x:Name="ImageRock"/>
+                            </Button.Background>
+
+                        </Button>
+
+
+                        <!-- Кнопка ножницы -->
+
+                    </StackPanel>
+
+                    <!-- Кнопка ножницы -->
+                    <StackPanel DockPanel.Dock="Left" >
+                        <Button x:Name="btnScissors" Click="btnScissorsClick_ChooseScissors"
+                            Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderBrush="Transparent"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth0" 
+                            materialDesign:ButtonAssist.CornerRadius="30" 
+                            Cursor="Hand"
+                            Width="217" Height="217"
+                            HorizontalAlignment="Left"
+                            Margin="150 30 0 0">
+                            <Button.Background>
+                                <ImageBrush x:Name="ImageScissors"/>
+                            </Button.Background>
+
+                        </Button>
+                    </StackPanel>
+
+                    <!-- Кнопка бумаги -->
+                    <StackPanel DockPanel.Dock="Left" >
+                        <Button x:Name="btnPapper" Click="btnPapperClick_ChoosePapper"
+                            Style="{StaticResource MaterialDesignFlatMidBgButton}" BorderBrush="Transparent"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth0" 
+                            materialDesign:ButtonAssist.CornerRadius="30" 
+                            Cursor="Hand"
+                            Width="217" Height="217"
+                            HorizontalAlignment="Right"
+                            Margin="0 30 68 0">
+                            <Button.Background>
+                                <ImageBrush x:Name="ImagePapper"/>
+                            </Button.Background>
+
+                        </Button>
+                    </StackPanel>
+
+                </DockPanel>
+
+            </Border>
+            <TextBox x:Name="txtWinsPlayer" Margin="126,63,704,170" FontSize="33" IsReadOnly="True"
+                 TextAlignment="Center"  BorderThickness="3" VerticalContentAlignment="Center"
+                Background="#AFE6FF" Style="{StaticResource TextBoxCorner}" BorderBrush="Transparent"/>
+
+
+            <TextBox x:Name="txtWinsComputer" Margin="704,63,126,170" FontSize="33" IsReadOnly="True"
+                 TextAlignment="Center"  BorderThickness="3" VerticalContentAlignment="Center"
+                Background="#AFE6FF" Style="{StaticResource TextBoxCorner}" BorderBrush="Transparent"/>
+
+            <Image x:Name="ImageTimer" HorizontalAlignment="Center" Height="100" Margin="0,42,0,0" VerticalAlignment="Top" Width="100" Source="/Resources/stopwatch.png"/>
+
+            <TextBox x:Name="txtTimer" Margin="425,183,405,50" FontSize="33" IsReadOnly="True"
+                 TextAlignment="Center"  BorderThickness="3" VerticalContentAlignment="Center"
+                Background="#AFE6FF" Style="{StaticResource TextBoxCorner}" BorderBrush="Transparent"/>
+            <Button x:Name="btnRestart" Click="btnRestart_Click" BorderBrush="Transparent" materialDesign:ButtonAssist.CornerRadius="40" Content="Button" 
+                    HorizontalAlignment="Center" Margin="0,90,0,0" 
+                    VerticalAlignment="Top" Height="60" Width="60" Cursor="Hand" Grid.Row="1">
+
+                <Button.Background>
+                    <ImageBrush x:Name="ImageRestart"/>
+                </Button.Background>
+
+            </Button>
+            <TextBox x:Name="txtRound" Margin="425,286,405,118" FontSize="33" IsReadOnly="True"
+                Text="Раунд" TextAlignment="Center"  BorderThickness="3" VerticalContentAlignment="Center"
+                Background="#AFE6FF" Style="{StaticResource TextBoxCorner}" BorderBrush="Transparent" Grid.RowSpan="2"/>
+
+
+
+
+        </Grid>
+    </materialDesign:Card>
+</Window>
