@@ -48,8 +48,6 @@ namespace RockPaperScissors
             InitializeComponent();
             Images();
             Timer();
-
-            PlayerChoose = "none";
             txtWinsComputer.Text = Convert.ToString($"Побед: {ComputerScore}");
             txtWinsPlayer.Text = Convert.ToString($"Побед: {playerScore}");
             txtRound.Text = Convert.ToString($"Раунд: {rounds}");
@@ -108,6 +106,46 @@ namespace RockPaperScissors
 
         }
 
+        private void btnRockClick_ChooseStone(object sender, RoutedEventArgs e)
+        {
+            PlayerChoose = "rock";
+            Player.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\stone.png", UriKind.Absolute));
+    
+        }
+
+        private void btnScissorsClick_ChooseScissors(object sender, RoutedEventArgs e)
+        {
+            PlayerChoose = "scissor";
+            Player.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\scissors.png", UriKind.Absolute));
+        }
+
+        private void btnPapperClick_ChoosePapper(object sender, RoutedEventArgs e)
+        {
+            PlayerChoose = "paper";
+            Player.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\parchment.png", UriKind.Absolute));
+        }
+
+        private void btnRestart_Click(object sender, RoutedEventArgs e)
+        {
+            _time = TimeSpan.FromSeconds(5);
+            _timer.Start();
+            playerScore = 0;
+            ComputerScore = 0;
+            rounds = 3;
+
+            txtWinsComputer.Text = Convert.ToString($"Побед: {ComputerScore}");
+            txtWinsPlayer.Text = Convert.ToString($"Побед: {playerScore}");
+            txtRound.Text = Convert.ToString($"Раунд: {rounds}");
+            gameOver = false;
+
+            Player.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\gamer.png", UriKind.Absolute));
+            ComputerName.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\robot.png", UriKind.Absolute));
+
+
+        }
+
+
+        //Доп методы
         private void checkGame()
         {
             if (PlayerChoose == "rock" && ComputerChoose == "paper")
@@ -129,7 +167,6 @@ namespace RockPaperScissors
                 txtRound.Text = Convert.ToString($"Раунд: {rounds}");
 
                 MessageBox.Show("Вы проиграли! Камень бьет ножницы");
-                PlayerChoose = "none";
             }
             else if (PlayerChoose == "paper" && ComputerChoose == "scissor")
             {
@@ -140,7 +177,6 @@ namespace RockPaperScissors
                 txtRound.Text = Convert.ToString($"Раунд: {rounds}");
 
                 MessageBox.Show("Вы проиграли! Ножницы бьют бумагу");
-                PlayerChoose = "none";
             }
 
             if (PlayerChoose == "rock" && ComputerChoose == "scissor")
@@ -152,7 +188,6 @@ namespace RockPaperScissors
                 txtRound.Text = Convert.ToString($"Раунд: {rounds}");
 
                 MessageBox.Show("Победа! Камень бьет ножницы");
-                PlayerChoose = "none";
 
             }
             else if (PlayerChoose == "paper" && ComputerChoose == "rock")
@@ -164,7 +199,6 @@ namespace RockPaperScissors
                 txtRound.Text = Convert.ToString($"Раунд: {rounds}");
 
                 MessageBox.Show("Победа!, Бумага бьет камень");
-                PlayerChoose = "none";
             }
             else if (PlayerChoose == "scissor" && ComputerChoose == "paper")
             {
@@ -175,26 +209,34 @@ namespace RockPaperScissors
                 txtRound.Text = Convert.ToString($"Раунд: {rounds}");
 
                 MessageBox.Show("Победа! Ножницы бьют бумагу");
-                PlayerChoose = "none";
             }
 
-            else if (PlayerChoose == "none")
+            else if (PlayerChoose == "rock" && ComputerChoose == "rock")
+            {
+
+                MessageBox.Show("Ничья!");
+            }
+
+            else if (PlayerChoose == "scissor" && ComputerChoose == "scissor")
+            {
+
+                MessageBox.Show("Ничья!");
+            }
+
+            else if (PlayerChoose == "paper" && ComputerChoose == "paper")
+            {
+
+                MessageBox.Show("Ничья!");
+            }
+
+
+            else if(PlayerChoose == "none")
             {
                 MessageBox.Show("Сделайте выбор!");
-                for (int i; i < chisla; i++)
-                {
-                }
-            }
-
-            else
-            {
-                MessageBox.Show("Ничья");
-                PlayerChoose = "none";
             }
 
             startNextRound();
         }
-
         public void startNextRound()
         {
             if (gameOver)
@@ -204,50 +246,11 @@ namespace RockPaperScissors
 
             _time = TimeSpan.FromSeconds(5);
             _timer.Start();
-            PlayerChoose = "none";
             Player.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\gamer.png", UriKind.Absolute));
             ComputerName.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\robot.png", UriKind.Absolute));
 
 
         }
-
-        private void btnRockClick_ChooseStone(object sender, RoutedEventArgs e)
-        {
-            Player.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\stone.png", UriKind.Absolute));
-            PlayerChoose = "rock";
-    
-        }
-
-        private void btnScissorsClick_ChooseScissors(object sender, RoutedEventArgs e)
-        {
-            Player.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\scissors.png", UriKind.Absolute));
-            PlayerChoose = "scissor";
-        }
-
-        private void btnPapperClick_ChoosePapper(object sender, RoutedEventArgs e)
-        {
-            Player.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\parchment.png", UriKind.Absolute));
-            PlayerChoose = "paper";
-        }
-
-        private void btnRestart_Click(object sender, RoutedEventArgs e)
-        {
-            _time = TimeSpan.FromSeconds(5);
-            _timer.Start();
-
-            PlayerChoose = "none";
-            playerScore = 0;
-            ComputerScore = 0;
-            rounds = 0;
-
-            txtWinsComputer.Text = Convert.ToString($"Побед: {ComputerScore}");
-            txtWinsPlayer.Text = Convert.ToString($"Побед: {playerScore}");
-            txtRound.Text = Convert.ToString($"Раунд: {rounds}");
-
-        }
-
-
-        //Доп методы
         private void Images()
         {
             //Картинка камня
