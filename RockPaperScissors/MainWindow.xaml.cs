@@ -24,6 +24,7 @@ namespace RockPaperScissors
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Определение дальнейших переменных
         DispatcherTimer _timer;
         TimeSpan _time;
 
@@ -46,8 +47,10 @@ namespace RockPaperScissors
         public MainWindow()
         {
             InitializeComponent();
-            Images();
-            Timer();
+
+            ImagesPath();
+            ResultTimer();
+
             txtWinsComputer.Text = Convert.ToString($"Побед: {ComputerScore}");
             txtWinsPlayer.Text = Convert.ToString($"Побед: {playerScore}");
             txtRound.Text = Convert.ToString($"Раунд: {rounds}");
@@ -55,7 +58,7 @@ namespace RockPaperScissors
 
         }
 
-        private void Timer()
+        private void ResultTimer()
         {
             _time = TimeSpan.FromSeconds(5);
 
@@ -251,15 +254,15 @@ namespace RockPaperScissors
 
 
         }
-        private void Images()
+        private void ImagesPath()
         {
-            //Картинка камня
+            //Картинка Камня
             ImageRock.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\stone.png", UriKind.Absolute));
 
-            //Картинка ножниц
+            //Картинка Ножниц
             ImageScissors.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\scissors.png", UriKind.Absolute));
 
-            //Картинка бумаги
+            //Картинка Бумаги
             ImagePapper.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\parchment.png", UriKind.Absolute));
 
             //Картинка Игрока
@@ -273,6 +276,9 @@ namespace RockPaperScissors
             ImageRestart.ImageSource = new BitmapImage(new Uri("D:\\RentalCarProject\\RockPaperScissors\\RockPaperScissors\\Resources\\synchronize.png", UriKind.Absolute));
         }
 
-
+        private void btnClick_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

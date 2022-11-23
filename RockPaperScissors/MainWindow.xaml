@@ -14,7 +14,6 @@
 
     <materialDesign:Card Width="1080" Height="720" UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}"
         Margin="25" materialDesign:ShadowAssist.ShadowDepth="Depth4">
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="303.295"/>
@@ -35,8 +34,8 @@
                     </Ellipse.Fill>
                 </Ellipse>
             </Border>
-            <TextBox x:Name="UserName" Margin="103,77,677,15" FontSize="33" IsReadOnly="True"
-                 Text="Игрок Владик" TextAlignment="Center"  BorderThickness="3" VerticalContentAlignment="Center"
+            <TextBox x:Name="UserName" Margin="103,77,677,15" FontSize="33" IsReadOnly="False"
+                 Text="Введите имя" TextAlignment="Center"  BorderThickness="3" VerticalContentAlignment="Center"
                    Background="#73C8F0" Style="{StaticResource TextBoxCorner}" BorderBrush="Transparent" Grid.Row="1"/>
 
 
@@ -48,6 +47,11 @@
                     </Ellipse.Fill>
                 </Ellipse>
             </Border>
+
+            <Button x:Name="Close" materialDesign:ButtonAssist.CornerRadius="30" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                    Margin="0,6,13,0" Click="btnClick_Close" Width="42" Height="36">
+                <TextBlock Text="X" Width="13"/>
+            </Button>
 
             <TextBox x:Name="CompName" Margin="678,77,102,15" FontSize="33" IsReadOnly="True"
                  Text="Bot John" TextAlignment="Center"  BorderThickness="3" VerticalContentAlignment="Center"
